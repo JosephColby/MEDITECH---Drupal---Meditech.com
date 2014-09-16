@@ -1,0 +1,72 @@
+//=My breakpoint variables
+// Taken from http://daniel.furzeface.com/blog/my-sass-media-query-mixin
+
+$breakpoint-extra-small: 20em;    //320px
+$breakpoint-small: 30em;          //480px
+$breakpoint-medium: 57.5em;       //800px
+$breakpoint-big-medium: 53.125em; //850px
+$breakpoint-extra-medium: 65em;   //1040px
+$breakpoint-large: 80em;          //1280px
+$breakpoint-extra-large: 100em;   //1600px
+
+//=Media Queries Mixin
+
+@mixin MQ($canvas) {
+  @if $canvas == XS {
+    @media all and (max-width: $breakpoint-extra-small) {
+      @content;
+    }
+  } @else if $canvas == S {
+    @media all and (max-width: $breakpoint-small) {
+      @content;
+    }
+  } @else if $canvas == M {
+    @media all and (max-width: $breakpoint-medium) {
+      @content;
+    }
+  } @else if $canvas == BM {
+    @media all and (max-width: $breakpoint-big-medium) {
+      @content;
+    }
+  } @else if $canvas == XM {
+    @media all and (min-width: $breakpoint-extra-medium) {
+      @content;
+    }
+  } @else if $canvas == L {
+    @media all and (max-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media all and (max-width: $breakpoint-extra-large) {
+      @content;
+    }
+  }
+}
+
+
+
+//=Usage Example
+
+// html {
+//   font-size: 65%;
+
+//   @include MQ(XS) {
+//     font-size: 75%;
+//   }
+
+//   @include MQ(S) {
+//     font-size: 85%;
+//   }
+
+//   @include MQ(M) {
+//     font-size: 100%;
+//   }
+
+//   @include MQ(L) {
+//     font-size: 120%;
+//   }
+
+//   @include MQ(XL) {
+//     font-size: 125%;
+//   }
+// }

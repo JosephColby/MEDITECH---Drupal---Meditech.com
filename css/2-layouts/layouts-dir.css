@@ -1,0 +1,52 @@
+h1.left.logo {
+  font-size: 4em;
+  font-family: arial;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+h1.left.logo a {
+  text-decoration: none;
+  color: #000;
+}
+
+.row.topright {
+  margin-top: 2em;
+}
+.row.topright a.clogin {
+  font-size: .8em;
+  background: green;
+  padding: .9em 1em;
+}
+.row.topright a.clogin:hover {
+  background: red;
+}
+
+ul.menu.mainmenu {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul.menu.mainmenu li {
+  display: inline-block;
+  margin-right: 2em;
+  font-size: 2em;
+}
+ul.menu.mainmenu li a {
+  text-decoration: none;
+  color: #009abc;
+}
+ul.menu.mainmenu li a:hover {
+  color: black;
+}
+
+#search-form {
+  display: none;
+}
+
+#mobilenav {
+  display: none;
+}
+@media (max-width: 50em) {
+  #mobilenav {
+    display: block;
+  }
+}

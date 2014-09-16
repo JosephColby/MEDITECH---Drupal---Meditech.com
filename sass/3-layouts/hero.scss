@@ -1,0 +1,149 @@
+#hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  padding: 2em 0;
+}
+
+#hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  top: 0;
+  bottom: 0;
+  /*background-image: url('../img/boston-skyline.png');*/
+  background-image: url('http://www.lorempixel.com/1600/500/abstract/');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-content {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 15em;
+  padding: 1em;
+  margin: auto;
+  /*width: 300px;*/
+  /*text-align: center;*/
+  background: rgba(0,0,0,0.25);
+  color: white;
+}
+
+.hero{
+    background: #009abc;
+    padding: 1em 0 0 0;
+}
+
+h1.eventherotext{
+  text-shadow: 1px 1px 1px #000;
+  color: #fff;
+  font-weight: $bold;
+  // font-size: $base-font-size * 4;
+  // font-size:3rem;
+}
+
+.event-info h2,h3.event-info{
+  text-shadow: 1px 1px 1px #000;
+  color: #fff;
+}
+
+h2.eventherotext{
+  // font-size: $base-font-size * 3;
+  font-family: $sans-serif-font-family;
+  font-weight: 100;
+}
+
+h2.heroimgtext{
+ line-height: 160%;
+ text-align:left;
+ color: #fff;
+ text-shadow: 1px 1px 4px #000;
+
+}
+
+.herodiv{
+ position:relative;
+ height:420px;
+}
+
+.herodivcontent{
+ position:absolute;
+ top:10%;
+ left:30%;
+ max-width: 500px;
+ margin-left:-200px;
+ z-index:2;
+}
+
+.herocontent-sm{
+ display:none;
+}
+
+
+@media (max-width: 60em){
+ .herodiv{
+   height:400px;
+ }
+ h2.heroimgtext{
+   // font-size:1.6em;
+ }
+ .herodivcontent{
+ left:30%;
+}
+}
+
+@media (max-width: 56em){
+ .herodiv{
+   height:370px;
+ }
+}
+
+@media (max-width: 56em){
+ .herodiv{
+   height:370px;
+ }
+}
+
+@media (max-width: 53em){
+ .herodiv{
+   height:340px;
+ }
+ .herodivcontent{
+ left:40%;
+}
+}
+
+@media (max-width:34em){
+ .herodivcontent{
+   display: none;
+ }
+ h2.heroimgtext{
+   display:none;
+ }
+}
+
+
+@media (max-width: 33.99em){
+ .herocontent-sm{
+   display: block;
+   margin-top:5em;
+   text-align:center;
+   }
+ .herodiv{
+   height:140px;
+   }
+ h2.heroimgtext{
+  display:block;
+  text-shadow: none;
+  color: #000;
+  text-align:center;
+   }
+ }
+
+ @media (max-width: 30em){
+ .herocontent-sm{
+   margin-top:2em;
+   }
+  }
