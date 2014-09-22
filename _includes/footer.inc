@@ -288,97 +288,17 @@
     $('.closeAccordion').click(function () {
       $('.accordion .content').removeClass('active');
     });
-
-    // Search Bar Functionality
-    var searchvisible = 0;
-
-    /* This is a function that checks if the search box is open and if
-         it is, it will close it. */
-    function closeSearch(obj) {
-      if (searchvisible !== 0) {
-        $(obj).slideUp(200);
-        searchvisible = 0;
-      }
-    }
-
-    $("a.search-menu").click(function (e) {
-      // This stops the page scrolling to the top on a .search-menu link.
-      e.preventDefault();
-      if (searchvisible === 0) {
-        //Search is currently hidden. Slide down and show it.
-        $("#search-form").slideDown(200);
-        $("#s").focus(); //Set focus on the search input field.
-        searchvisible = 1; //Set search visible flag to visible.
-      } else {
-        //Search is currently showing. Slide it back up and hide it.
-        closeSearch("#search-form");
-      }
-    });
-
-    // Close Search box if other menus are opened.
-    $("a.main-menu, a.login-menu").click(function () {
-      closeSearch("#search-form");
-    });
-
   });
 </script>
 
 <!-- Sticky Navigation - Function -->
-<script type="text/javascript">
-  $(document).ready(function () {
-
-    // Sticky Navigation - (JC)
-    $(window).scroll(function () {
-
-      /* Varibles */
-      $mobileViewWidth = 640;
-      $navHeight = 60;
-      // Width of the window
-      $windowWidth = $(window).width();
-      // How many pixels until the sticky nav appears
-      $stickyNavPosition = 160;
-
-      // Functionality
-      if ($(window).scrollTop() >= $stickyNavPosition) {
-        // alert($windowWidth);
-        if ($('#stickyNav').hasClass('floating') == false) {
-          /* IF it's Mobile Viewport Size we don't need to
-               animate the menu, if it's not we do. That's what
-               the if statement below does. */
-          if ($windowWidth > $mobileViewWidth) {
-            $('#stickyNav').addClass('floating').css({
-              top: $navHeight * -1
-            }).stop().animate({
-              top: 0
-            }, 250);
-          } else {
-            $('#stickyNav').addClass('floating').stop();
-          }
-        }
-      } else {
-        if ($('#stickyNav').hasClass('floating') == true) {
-          $('#stickyNav').stop().removeClass('floating');
-        }
-      }
-    });
-
-    /* The function below forces the scroll function to fire - (JC)
-         (i) This is needed so that if the user is halfway down the
-         page and then reloads the page that the sticky navigation
-         appears and doesn't require the user to scroll for it to appear. */
-    $(window).scroll();
-
-  });
-</script>
+<script src="js/stickynav/stickynav.js"></script>
 
 <!-- Search Bar Dropdown Script -->
 <!-- <script src="js/search/search.js"></script> -->
 
 <!-- Polyfills fix for IE 8 & 9 -->
 <script src="js/rem.min.js"></script>
-
-<!-- PARALLAX -->
-<script src="js/parallax.js"></script>
 
 </body>
 

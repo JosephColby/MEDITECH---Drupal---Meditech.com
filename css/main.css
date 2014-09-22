@@ -2630,6 +2630,15 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+body {
+  overflow: auto;
+  -moz-perspective: 1px;
+  -webkit-perspective: 1px;
+  perspective: 1px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
 /* Fool-proof @font-face */
 /* Based on http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/ */
 @font-face {
@@ -2829,158 +2838,135 @@ body {
 #page {
   position: relative; }
 
-/*
-  Sticky Navigation - #stickyNav
-  ----------------------------------
-  - Desktop navigation - #desktopnav
-  - Mobile navigation - #mobilenav
-*/
-#desktopnav,
-#mobilenav {
-  display: none; }
+/* FOR DEMO ONLY */
+body {
+  height: 1000px; }
 
-#stickyNav #desktopnav.show,
-#stickyNav #mobilenav.show {
-  display: block; }
-
-#stickyNav {
+/* MIXINS */
+/* NAVIGATION
+ * ----------
+ * .large - controls pieces that should be shown on larger screens.
+ * .small - controls pieces that should be shown on smaller screens. 
+ */
+#nav {
+  padding: 15px 0;
+  width: 100%;
   display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #fff;
-  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  width: 100%; }
-
-#mobilenav {
-  background: #fff;
-  margin-bottom: 0px; }
-  #mobilenav h1.logo {
-    font-family: Arial, Helvetica, sans-serif !important;
+  background-color: white;
+  box-sizing: border-box; }
+  #nav .clear {
+    clear: both; }
+  #nav a {
+    text-decoration: none;
+    line-height: 50px; }
+  #nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  #nav h1 {
+    float: left;
     font-weight: bold;
-    letter-spacing: -2px;
-    line-height: 60px;
-    display: inline-block;
-    height: 60px;
+    height: 50px;
+    line-height: 50px;
     margin: 0;
     padding: 0; }
-  #mobilenav a {
+  #nav h1.large {
+    width: 0;
+    overflow: hidden; }
+  #nav h1.large a {
     display: block;
-    height: 60px;
-    line-height: 60px;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0; }
-  #mobilenav a.main-menu {
-    padding-right: 15px;
-    margin-right: 15px;
-    margin-left: 15px;
-    border-right: 1px solid #eee;
-    float: left; }
-  #mobilenav a.search-menu, #mobilenav a.login-menu {
+    width: 50px;
+    background: green;
+    text-align: center;
+    color: #fff; }
+  #nav ul.nav-buttons {
     float: right;
-    width: 50px; }
-  #mobilenav a.search-menu {
-    background: url(../img/SearchIcon.svg) no-repeat center center;
-    background-size: 30px 30px; }
-  #mobilenav a.login-menu {
-    background: url(../img/CustomerLoginIcon.svg) no-repeat center center;
-    background-size: 30px 30px; }
+    display: none; }
+    @media (max-width: 775px) {
+      #nav ul.nav-buttons {
+        display: block; } }
+  #nav ul.nav-buttons li {
+    display: inline-block; }
+  #nav ul.nav-buttons a {
+    display: inline-block;
+    float: right;
+    height: 35px;
+    width: 35px;
+    margin-top: 7px; }
+  #nav ul.nav-buttons a.search-menu {
+    background: url(http://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Search_font_awesome.svg/512px-Search_font_awesome.svg.png) no-repeat center center;
+    background-size: 35px 35px;
+    margin-right: 15px; }
+  #nav ul.nav-buttons a.login-menu {
+    background: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-128.png) no-repeat center center;
+    background-size: 35px 35px; }
+  #nav ul.menu {
+    float: left; }
+  #nav ul.menu li {
+    display: inline-block;
+    margin-right: 1em;
+    font-size: 2em; }
+  #nav ul.menu a {
+    display: block;
+    height: 50px; }
+    @media (max-width: 970px) {
+      #nav ul.menu a {
+        font-size: 70%; } }
+  #nav ul.menu.small li {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #eee; }
+  #nav #js-searchbox {
+    display: none;
+    clear: both; }
+  #nav .large {
+    display: block; }
+    @media (max-width: 775px) {
+      #nav .large {
+        display: none; } }
+  #nav .small {
+    display: none; }
+    @media (max-width: 775px) {
+      #nav .small {
+        display: block; } }
+  @media (max-width: 775px) {
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      padding: 15px;
+      -webkit-box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); } }
 
-#mobilenav.fixed {
+#nav.js-sticky {
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2); }
-
-.floating #desktopnav {
-  display: block; }
-
-#desktopnav {
-  display: none;
-  padding: .5em 0; }
-  #desktopnav h1 {
-    float: left; }
-  #desktopnav h1 a.logo {
-    display: block;
-    font-size: 36px;
+  z-index: 100;
+  padding: 15px;
+  -webkit-box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+  /* Logo Animation */ }
+  #nav.js-sticky h1.large {
     width: 50px;
-    height: 50px;
-    background: #006652;
-    margin: 5px 5px 0px 15px;
-    font-weight: bold;
-    font-family: arial;
-    font-weight: bold;
-    text-align: center;
-    color: white;
-    padding-top: .2em; }
-  #desktopnav ul.menu {
-    display: block;
-    float: left;
-    margin: 0;
-    margin-top: .8em; }
-  #desktopnav ul.menu li {
-    display: inline-block;
-    margin-right: 2em;
-    font-size: 1.6em; }
-    #desktopnav ul.menu li:last-child {
-      margin-right: 0; }
-  #desktopnav a {
-    text-decoration: none;
-    color: #009abc; }
-    #desktopnav a:hover {
-      color: #003a69; }
-  @media all and (max-width: 57.5em) {
-    #desktopnav {
-      font-size: 80%; } }
-  #desktopnav ul.buttons {
-    display: block;
-    float: right;
-    margin: 0;
-    list-style: none; }
-  #desktopnav ul.buttons li {
-    display: inline-block;
-    padding: 0 15px; }
-  #desktopnav ul.buttons li a {
-    display: inline-block;
-    padding: 15px 0; }
-
-#search-form {
-  margin-bottom: 0;
-  padding-bottom: 5px; }
-  #search-form input, #search-form a.button {
-    margin-bottom: 0; }
-
-/* -------------
-   MEDIA Queries
-   ------------- */
-@media only screen {
-  .event.medium-6 {
-    text-align: center; }
-
-  .event.medium-6 .datebox {
-    margin: 0 auto; } }
-@media (max-width: 915px) {
-  .row.topright a.clogin {
-    font-size: 60%;
-    padding: 1.4em 0; } }
-@media (max-width: 750px) {
-  .herodiv {
-    margin-top: 70px; }
-
-  #mobilenav {
+    margin-right: 15px;
+    transition: .4s; }
+  #nav.js-sticky ul.nav-buttons {
     display: block; }
 
-  .floating #desktopnav {
+#nav.js-sticky + #js-content {
+  margin-top: 80px; }
+
+/* Toggle Header for Mobile */
+@media (max-width: 775px) {
+  #header {
     display: none; }
 
-  .header-hide {
-    display: none; }
-
-  .mainmenu {
-    display: none; } }
+  body {
+    padding-top: 95px; } }
 html {
   font-family: sans-serif; }
 
@@ -2997,115 +2983,23 @@ body {
 .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-open-right, .sb-close {
   cursor: pointer; }
 
-#hero {
-  position: relative;
-  height: 480px;
-  overflow: hidden;
-  padding: 2em 0; }
+.hero-unit {
+  background-image: url("http://www.lorempixel.com/1600/600/abstract/");
+  background-attachment: fixed;
+  height: 400px; }
 
-#hero-bg {
-  position: absolute;
-  width: 100%;
-  height: 300px;
-  top: 0;
-  bottom: 0;
-  /*background-image: url('../img/boston-skyline.png');*/
-  background-image: url("http://www.lorempixel.com/1600/500/abstract/");
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: cover; }
+.herocontent {
+  -moz-transform: translateZ(0.2px) scale(0.8);
+  -o-transform: translateZ(0.2px) scale(0.8);
+  -ms-transform: translateZ(0.2px) scale(0.8);
+  -webkit-transform: translateZ(0.2px) scale(0.8);
+  transform: translateZ(0.2px) scale(0.8);
+  z-index: 200;
+  padding: 10em 1em 2em 1em; }
+  .herocontent h1, .herocontent h2 {
+    color: white;
+    text-shadow: 1px 1px 1px #000; }
 
-.hero-content {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 15em;
-  padding: 1em;
-  margin: auto;
-  /*width: 300px;*/
-  /*text-align: center;*/
-  background: rgba(0, 0, 0, 0.25);
-  color: white; }
-
-.hero {
-  background: #009abc;
-  padding: 1em 0 0 0; }
-
-h1.eventherotext {
-  text-shadow: 1px 1px 1px #000;
-  color: #fff;
-  font-weight: 700; }
-
-.event-info h2, h3.event-info {
-  text-shadow: 1px 1px 1px #000;
-  color: #fff; }
-
-h2.eventherotext {
-  font-family: "source-sans-pro", helvetica, arial, sans-serif;
-  font-weight: 100; }
-
-h2.heroimgtext {
-  line-height: 160%;
-  text-align: left;
-  color: #fff;
-  text-shadow: 1px 1px 4px #000; }
-
-.herodiv {
-  position: relative;
-  height: 420px; }
-
-.herodivcontent {
-  position: absolute;
-  top: 10%;
-  left: 30%;
-  max-width: 500px;
-  margin-left: -200px;
-  z-index: 2; }
-
-.herocontent-sm {
-  display: none; }
-
-@media (max-width: 60em) {
-  .herodiv {
-    height: 400px; }
-
-  .herodivcontent {
-    left: 30%; } }
-@media (max-width: 56em) {
-  .herodiv {
-    height: 370px; } }
-@media (max-width: 56em) {
-  .herodiv {
-    height: 370px; } }
-@media (max-width: 53em) {
-  .herodiv {
-    height: 340px; }
-
-  .herodivcontent {
-    left: 40%; } }
-@media (max-width: 34em) {
-  .herodivcontent {
-    display: none; }
-
-  h2.heroimgtext {
-    display: none; } }
-@media (max-width: 33.99em) {
-  .herocontent-sm {
-    display: block;
-    margin-top: 5em;
-    text-align: center; }
-
-  .herodiv {
-    height: 140px; }
-
-  h2.heroimgtext {
-    display: block;
-    text-shadow: none;
-    color: #000;
-    text-align: center; } }
-@media (max-width: 30em) {
-  .herocontent-sm {
-    margin-top: 2em; } }
 aside .panel {
   position: relative; }
   aside .panel dl dd {

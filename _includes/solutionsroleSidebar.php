@@ -1,7 +1,7 @@
-
+<aside>
 	<div class="medium-4 column">
 		<div class="panel">
-		<aside>
+
 			<h3>Other Roles</h3>
 			<dl>
 					<dd><a href="solutions-physician.php">Physicians</a>
@@ -39,7 +39,7 @@
 
 					<dd><a href="#">Oncology Departments</a>
 					</dd>
-			</aside>
+
 		</div>
 
 		<div class="row">
@@ -52,3 +52,4 @@
 
 	</div>
 	<!-- End of Right Column - .medium-4 -->
+</aside>

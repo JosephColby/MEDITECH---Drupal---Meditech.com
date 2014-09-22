@@ -11,185 +11,195 @@ body {
 #page {
   position: relative;
 }
-/*
-  Sticky Navigation - #stickyNav
-  ----------------------------------
-  - Desktop navigation - #desktopnav
-  - Mobile navigation - #mobilenav
-*/
-#desktopnav,
-#mobilenav {
-  display: none;
+/* FOR DEMO ONLY */
+body {
+  height: 1000px;
 }
-#stickyNav #desktopnav.show,
-#stickyNav #mobilenav.show {
-  display: block;
+
+/* MIXINS */
+@mixin MQ($point) {
+  $small: "(max-width: 775px)";
+  $medium: "(max-width: 970px)";
+  @if $point == small {
+    @media #{$small} { @content; }
+  }
+  @if $point == medium {
+    @media #{$medium} { @content; }
+  }
 }
-#stickyNav {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #fff;
-  box-shadow: 0px 1px 9px rgba(0, 0, 0, .2);
-  z-index: 100;
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+
+@mixin box-shadow-style($type) {
+  $nav: 0px 1px 9px rgba(0, 0, 0, .2);
+  @if $type == nav {
+    @include box-shadow($nav);
+  } 
+}
+
+/* NAVIGATION
+ * ----------
+ * .large - controls pieces that should be shown on larger screens.
+ * .small - controls pieces that should be shown on smaller screens. 
+ */
+
+#nav {
+  padding: 15px 0;
   width: 100%;
-}
-#mobilenav {
-  background: #fff;
-  margin-bottom: 0px;
-    h1.logo {
-        font-family: Arial, Helvetica, sans-serif !important;
-        font-weight: bold;
-        letter-spacing: -2px;
-        line-height: 60px;
-        display: inline-block;
-        height: 60px;
-        margin: 0;
-        padding: 0;
-    }
-    h1.logo a {
-      // font-size: .8em;
-    }
-    a {
-        display: block;
-        height: 60px;
-        line-height: 60px;
-        padding-top: 0; padding-bottom: 0;
-        margin-top: 0; margin-bottom: 0;
-    }
-    a.main-menu {
-        padding-right: 15px;
-        margin-right: 15px;
-        margin-left: 15px;
-        border-right: 1px solid #eee;
-        float: left;
-    }
-    a.search-menu, a.login-menu {
-      float: right;
-      width: 50px;
-    }
-    a.search-menu {
-      background: url(../img/SearchIcon.svg) no-repeat center center;
-      background-size: 30px 30px;
-    }
-    a.login-menu {
-      background: url(../img/CustomerLoginIcon.svg) no-repeat center center;
-      background-size: 30px 30px;
-    }
-}
-
-#mobilenav.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 0px 1px 9px rgba(0, 0, 0, .2);
-}
-
-.floating #desktopnav {
   display: block;
-}
-
-#desktopnav {
-  display: none;
-  padding: .5em 0;
-  h1 {
-    float: left;
-  }
-  h1 a.logo {
-    display: block;
-    font-size: 36px;
-    width: 50px;
-    height: 50px;
-    background: $meditech-green;
-    margin: 5px 5px 0px 15px;
-    font-weight:bold;
-    font-family: arial;
-    font-weight: bold;
-    text-align: center;
-    color: white;
-    padding-top: .2em;
-  }
-  ul.menu {
-    display: block;
-    float: left;
-    margin: 0;
-    margin-top: .8em;
-  }
-  ul.menu li {
-    display: inline-block;
-    margin-right: 2em;
-    font-size: 1.6em;
-    &:last-child{
-    margin-right: 0;
-    }
-  }
-  a{
+  background-color: rgba(255,255,255,1);
+  box-sizing: border-box;
+  
+  .clear { clear:both; }
+  
+  a {
     text-decoration: none;
-    color: #009abc;
-    &:hover{
-    color: $blueberry;
-    }
+    line-height: 50px;
   }
-  @include MQ(M) {
-     font-size: 80%;
-  }
-  ul.buttons {
-    display: block;
-    float: right;
+  
+  ul {
     margin: 0;
+    padding: 0;
     list-style: none;
   }
-  ul.buttons li {
-    display: inline-block;
-    padding: 0 15px;
+  
+  h1 {
+    float: left;
+    font-weight:bold;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
   }
-  ul.buttons li a {
-    display: inline-block;
-    padding: 15px 0;
+  
+  h1.large {
+    width: 0;
+    overflow: hidden;
   }
-}
-
-#search-form {
-  margin-bottom: 0;
-  padding-bottom: 5px;
-  input, a.button {
-    margin-bottom: 0;
-  }
-}
-
-/* -------------
-   MEDIA Queries
-   ------------- */
-@media only screen {
-  .event.medium-6 {
+  
+  h1.large a {
+    display: block;
+    width: 50px;
+    background: green;
     text-align: center;
+    color: #fff;
   }
-  .event.medium-6 .datebox {
-    margin: 0 auto;
+  
+  ul.nav-buttons {
+    float: right;
+    display: none;
+    @include MQ(small) {
+      display: block; 
+    }
   }
+  
+  ul.nav-buttons li {
+    display: inline-block;
+  }
+  
+  ul.nav-buttons a {
+    display: inline-block;
+    float: right;
+    height: 35px;
+    width: 35px;
+    margin-top: 7px;
+  }
+  
+  ul.nav-buttons a.search-menu {
+    background: url(http://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Search_font_awesome.svg/512px-Search_font_awesome.svg.png) no-repeat center center;
+    background-size: 35px 35px;
+    margin-right: 15px;
+  }
+
+  ul.nav-buttons a.login-menu {
+    background: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-128.png) no-repeat center center;
+    background-size: 35px 35px;
+  }
+  
+  ul.menu {
+    float: left;
+  }
+  
+  ul.menu li {
+    display: inline-block;
+    margin-right: 1em;
+    font-size: 2em; 
+  }
+  
+  ul.menu a {
+    display: block;
+    height: 50px;
+    @include MQ(medium){
+      font-size: 70%;
+    }
+  }
+  
+  ul.menu.small li {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #eee; 
+  }
+  
+  #js-searchbox {
+    display: none;
+    clear: both;
+  }
+  
+  .large {
+    display: block;
+    @include MQ(small) {
+      display: none; 
+    }
+  }
+  
+  .small {
+    display: none; 
+    @include MQ(small) {
+      display: block;
+    }
+  }
+  
+  @include MQ(small) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 15px;
+    @include box-shadow-style(nav);
+  }
+  
 }
-@media (max-width:915px){
-  .row.topright a.clogin{
-    font-size: 60%;
-    padding: 1.4em 0;
-  }
-}
-@media (max-width: 750px) {
-  .herodiv {
-    margin-top: 70px;
-  }
-  #mobilenav {
+
+#nav.js-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 15px;
+  @include box-shadow-style(nav);
+  
+  /* Logo Animation */
+  h1.large {
+    width: 50px;
+    margin-right: 15px;
+    transition: .4s;
+  }  
+  
+  ul.nav-buttons {
     display: block;
   }
-  .floating #desktopnav{
-    display: none;
-  }
-  .header-hide{
-    display: none;
-  }
-  .mainmenu{
-    display: none;
-  }
+}
 
+#nav.js-sticky + #js-content {
+  margin-top: 80px;
+}
+
+/* Toggle Header for Mobile */
+@include MQ(small) {
+  #header { display: none; }
+  body { padding-top: 95px; }
 }

@@ -1,33 +1,25 @@
 <?php include( "_includes/header.inc"); ?>
 
 
-<div id="hero">
-  <div id="hero-bg"></div>
-  <div class="hero-content">
-    <div class="event-info">
-      <div class="row">
-        <div class="column">
-          <!-- <h1 class="eventherotext">Physician Forum</h1> -->
-          <h1 class="eventherotext">6.x Peer-to-Peer Information Exchange</h1>
-          <h2 class="eventherotext">Practical Strategies for Making the Most of the Solutions in Your Hands</h2>
-          <a class="button tiny clogin" href="#">WaHoo</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="hero-unit">
+	<div class="herocontent row">
+		<div class="column">
+			<h1>6.x Peer-to-Peer Information Exchange</h1>
+			<h2>Practical Strategies for Making the Most of the Solutions in Your Hand</h2>
+		</div>
+	</div>
 </div>
-
 
 <!-- EHR SOLUTIONS -->
 <article>
-	<div class="row">
-		<div id="ehr-solutions">
+	<div id="ehr-solutions">
+		<div class="row">
 			<div class="columns">
 				<h2>EHR Solutions</h2>
 				<p>See for yourself why our customer community of hospitals, ambulatory care centers, physicians' offices, home care organizations, long term care and behavioral health facilities choose MEDITECH.</p>
 			</div>
 		</div>
-	</div>
+
 	<!-- .row -->
 	<div class="row stats">
 
@@ -56,6 +48,7 @@
 			<h2 style="text-align:center">THEIR SOLUTION. WE CAN BE YOURS TOO.</h2>
 		</div>
 	</div>
+
 	<!-- .row -->
 
 	<!-- .row -->
@@ -68,6 +61,7 @@
 		</div>
 	</div>
 	<!-- .row -->
+</div>
 </article>
 
 <div class="row">
@@ -76,8 +70,10 @@
 	</div>
 </div>
 
+
 <!-- UPCOMING EVENTS -->
-<article><div class="row">
+<article>
+<div class="row">
 	<div class="column">
 		<h2>Upcoming Events</h2>
 	</div>
@@ -210,9 +206,6 @@
 	<!-- END DATE EVENTS -->
 
 	<!-- BUTTON -->
-
-	<br>
-	<br>
 
 	<div class="row">
 		<div class="medium-4 column right">
